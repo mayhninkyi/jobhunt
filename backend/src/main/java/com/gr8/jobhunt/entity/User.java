@@ -43,7 +43,7 @@ public class User implements java.io.Serializable {
 	@Enumerated(EnumType.STRING)
 	private UserStatus status;
 
-	@Column(columnDefinition = "ENUM('admin', 'user','compnay') NOT NULL")
+	@Column(columnDefinition = "ENUM('admin', 'user','company') NOT NULL")
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
 	
@@ -54,13 +54,117 @@ public class User implements java.io.Serializable {
 	private String address;
 	
 	@Column(length = 200)
-	@NotBlank(message = "Required")
 	private String profilePath;
+	
+	@Column(nullable = false)
+	private String phone;
 
 	@Column(nullable = false)
 	@ColumnDefault("CURRENT_TIMESTAMP")
 	private LocalDateTime createdAt;
 
 	private LocalDateTime updatedAt;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getGmail() {
+		return gmail;
+	}
+
+	public void setGmail(String gmail) {
+		this.gmail = gmail;
+	}
+
+	public UserStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(UserStatus status) {
+		this.status = status;
+	}
+
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
+	}
+
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getProfilePath() {
+		return profilePath;
+	}
+
+	public void setProfilePath(String profilePath) {
+		this.profilePath = profilePath;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 
 }

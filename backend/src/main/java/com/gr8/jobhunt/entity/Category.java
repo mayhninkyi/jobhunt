@@ -21,7 +21,24 @@ public class Category implements java.io.Serializable {
 	public static final long serialVersionUID=1L;
 	@Id
 	private int id;
-	@Column(length=50, nullable=false)
+	@Column(length=100, nullable=false)
 	private String name;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 
 }

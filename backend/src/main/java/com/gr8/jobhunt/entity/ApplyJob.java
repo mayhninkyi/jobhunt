@@ -1,3 +1,4 @@
+
 package com.gr8.jobhunt.entity;
 import java.time.LocalDateTime;
 
@@ -9,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ColumnDefault;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +27,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class JobPost implements java.io.Serializable {
+public class ApplyJob implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -32,35 +35,23 @@ public class JobPost implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(length = 50, nullable = false)
-	@NotBlank(message = "Required")
-	private String title;
-
-	@Column(length = 2000, nullable = false)
-	@NotBlank(message = "Required")
-	private String description;
-	
-	@Column(length = 2000, nullable = false)
-	@NotBlank(message = "Required")
-	private String reqirement;
-
-	@Column(nullable = false)
-	private int noOfEmployee;
-
-	@Column(nullable = false)
-	private int salary;
+	@ManyToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@NotNull(message = "Required")
+	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	private Category category;
-	
-	@ManyToOne
-	@JoinColumn(name = "company_id", referencedColumnName = "id")
-	private User company;
+	@JoinColumn(name = "job_id", referencedColumnName = "id")
+	@NotNull(message = "Required")
+	private JobPost job;
 
-	@Column(columnDefinition = "boolean", nullable = false)
-	@ColumnDefault("false")
-	private Boolean isCloseJob;
+	@Column(length = 200)
+	@NotBlank(message = "Required")
+	private String cvFormPath;
+	
+	@Column(length = 200)
+	@NotBlank(message = "Required")
+	private String cvVideoPath;
 
 	@Column(nullable = false)
 	@ColumnDefault("CURRENT_TIMESTAMP")
