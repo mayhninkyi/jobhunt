@@ -3832,3 +3832,27 @@ This generated password is for development use only. Your security configuration
 2022-12-23 22:43:46.269 DEBUG 26036 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
 2022-12-23 22:43:46.270 DEBUG 26036 --- [http-nio-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.gr8.jobhunt.entity.Job@8f760d6]
 2022-12-23 22:43:46.272 DEBUG 26036 --- [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-23 23:12:14.312 DEBUG 26036 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJob(int)
+2022-12-23 23:12:14.318 DEBUG 26036 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/job/1", parameters={}
+2022-12-23 23:12:14.320 DEBUG 26036 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJob(int)
+2022-12-23 23:12:14.360 DEBUG 26036 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-12-23 23:12:14.361 DEBUG 26036 --- [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.gr8.jobhunt.entity.Job@66b1bf66]
+2022-12-23 23:12:14.364 DEBUG 26036 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-23 23:12:19.279 DEBUG 26036 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJobsByCategory(int)
+2022-12-23 23:12:19.281 DEBUG 26036 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/job/category/3", parameters={}
+2022-12-23 23:12:19.284 DEBUG 26036 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJobsByCategory(int)
+2022-12-23 23:12:19.300 DEBUG 26036 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2022-12-23 23:12:19.301 DEBUG 26036 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Category ID is invalid"]
+2022-12-23 23:12:19.303 DEBUG 26036 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2022-12-23 23:13:23.567 DEBUG 26036 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJob(int)
+2022-12-23 23:13:23.575 DEBUG 26036 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/job/2", parameters={}
+2022-12-23 23:13:23.577 DEBUG 26036 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJob(int)
+2022-12-23 23:13:23.598 DEBUG 26036 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-12-23 23:13:23.601 DEBUG 26036 --- [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.gr8.jobhunt.entity.Job@719fce17]
+2022-12-23 23:13:23.604 DEBUG 26036 --- [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2022-12-23 23:13:27.914 DEBUG 26036 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJob(int)
+2022-12-23 23:13:27.915 DEBUG 26036 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/job/3", parameters={}
+2022-12-23 23:13:27.916 DEBUG 26036 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.gr8.jobhunt.controller.JobController#getJob(int)
+2022-12-23 23:13:27.931 DEBUG 26036 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-12-23 23:13:27.931 DEBUG 26036 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2022-12-23 23:13:27.933 DEBUG 26036 --- [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
