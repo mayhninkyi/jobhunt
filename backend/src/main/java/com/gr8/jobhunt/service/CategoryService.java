@@ -5,7 +5,7 @@ import java.util.List;
 import com.gr8.jobhunt.entity.Category;
 
 public interface CategoryService {
-  public List<Category> getAlll();
+  public List<Category> getAll();
   
   public Category get(int id);
   

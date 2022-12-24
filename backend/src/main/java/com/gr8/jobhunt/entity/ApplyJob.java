@@ -43,7 +43,7 @@ public class ApplyJob implements java.io.Serializable {
 	@ManyToOne
 	@JoinColumn(name = "job_id", referencedColumnName = "id")
 	@NotNull(message = "Required")
-	private JobPost job;
+	private Job job;
 
 	@Column(length = 200)
 	@NotBlank(message = "Required")

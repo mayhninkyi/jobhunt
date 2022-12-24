@@ -24,7 +24,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class JobPost implements java.io.Serializable {
+public class Job implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,7 @@ public class JobPost implements java.io.Serializable {
 	
 	@Column(length = 2000, nullable = false)
 	@NotBlank(message = "Required")
-	private String reqirement;
+	private String requirement;
 
 	@Column(nullable = false)
 	private int noOfEmployee;

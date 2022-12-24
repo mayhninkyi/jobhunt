@@ -34,7 +34,7 @@ public class AdminController {
 	
 	@GetMapping("/category")
 	public List<Category> getAllCategory(){
-		return categoryService.getAlll();
+		return categoryService.getAll();
 	}
 	
 	@PostMapping("/category/create")
