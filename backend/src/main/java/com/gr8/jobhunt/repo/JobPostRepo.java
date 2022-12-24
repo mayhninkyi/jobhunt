@@ -9,11 +9,10 @@ import com.gr8.jobhunt.entity.Category;
 import com.gr8.jobhunt.entity.Job;
 
 @EnableJpaRepositories
-public interface JobRepo extends JpaRepository<Job, Integer> {
-	
- public List<Job> findByCategory(Category category);
- 
- public Job findByTitle(String title);
- 
- 
+public interface JobPostRepo extends JpaRepository<Job, Integer> {
+
+	public List<Job> findByCategory(Category category);
+
+	public Job findByTitle(String title);
+
 }
