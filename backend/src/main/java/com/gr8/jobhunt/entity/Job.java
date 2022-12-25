@@ -1,4 +1,5 @@
 package com.gr8.jobhunt.entity;
+
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -39,7 +40,7 @@ public class Job implements java.io.Serializable {
 	@Column(length = 2000, nullable = false)
 	@NotBlank(message = "Required")
 	private String description;
-	
+
 	@Column(length = 2000, nullable = false)
 	@NotBlank(message = "Required")
 	private String requirement;
@@ -53,7 +54,7 @@ public class Job implements java.io.Serializable {
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
 	private Category category;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "company_id", referencedColumnName = "id")
 	private User company;
@@ -67,5 +68,97 @@ public class Job implements java.io.Serializable {
 	private LocalDateTime createdAt;
 
 	private LocalDateTime updatedAt;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getRequirement() {
+		return requirement;
+	}
+
+	public void setRequirement(String requirement) {
+		this.requirement = requirement;
+	}
+
+	public int getNoOfEmployee() {
+		return noOfEmployee;
+	}
+
+	public void setNoOfEmployee(int noOfEmployee) {
+		this.noOfEmployee = noOfEmployee;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public User getCompany() {
+		return company;
+	}
+
+	public void setCompany(User company) {
+		this.company = company;
+	}
+
+	public Boolean getIsCloseJob() {
+		return isCloseJob;
+	}
+
+	public void setIsCloseJob(Boolean isCloseJob) {
+		this.isCloseJob = isCloseJob;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }
