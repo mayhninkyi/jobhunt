@@ -13,6 +13,6 @@ public interface JobPostRepo extends JpaRepository<Job, Integer> {
 
 	public List<Job> findByCategory(Category category);
 
-	public Job findByTitle(String title);
+	public List<Job> findByTitle(String title);
 
 }

@@ -20,7 +20,7 @@ import com.gr8.jobhunt.entity.User;
 import com.gr8.jobhunt.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 	
 	@Autowired

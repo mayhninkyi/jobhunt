@@ -19,6 +19,7 @@ import com.gr8.jobhunt.service.CategoryService;
 import com.gr8.jobhunt.service.UserService;
 
 @RestController
+@RequestMapping("/api")
 public class AdminController {
 	
 	@Autowired

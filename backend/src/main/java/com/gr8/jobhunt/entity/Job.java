@@ -59,7 +59,7 @@ public class Job implements java.io.Serializable {
 	@JoinColumn(name = "company_id", referencedColumnName = "id")
 	private User company;
 
-	@Column(columnDefinition = "boolean", nullable = false)
+	@Column(columnDefinition = "boolean")
 	@ColumnDefault("false")
 	private Boolean isCloseJob;
 

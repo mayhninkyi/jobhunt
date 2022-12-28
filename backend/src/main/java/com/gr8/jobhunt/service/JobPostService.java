@@ -19,6 +19,6 @@ public interface JobPostService {
 
 	public List<Job> getAllByCategory(Category category);
 
-	public Job getByTitle(String title);
+	public List<Job> getByTitle(String title);
 
 }

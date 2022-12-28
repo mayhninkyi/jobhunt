@@ -59,4 +59,65 @@ public class ApplyJob implements java.io.Serializable {
 
 	private LocalDateTime updatedAt;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Job getJob() {
+		return job;
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
+	public String getCvFormPath() {
+		return cvFormPath;
+	}
+
+	public void setCvFormPath(String cvFormPath) {
+		this.cvFormPath = cvFormPath;
+	}
+
+	public String getCvVideoPath() {
+		return cvVideoPath;
+	}
+
+	public void setCvVideoPath(String cvVideoPath) {
+		this.cvVideoPath = cvVideoPath;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
 }

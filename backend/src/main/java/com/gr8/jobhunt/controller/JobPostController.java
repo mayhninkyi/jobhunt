@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gr8.jobhunt.entity.Category;
@@ -21,6 +22,8 @@ import com.gr8.jobhunt.service.CategoryService;
 import com.gr8.jobhunt.service.JobPostService;
 
 @RestController
+@RequestMapping("/api")
+
 public class JobPostController {
 
 	@Autowired
@@ -29,12 +32,12 @@ public class JobPostController {
 	@Autowired
 	CategoryService categoryService;
 
-	@GetMapping(path = "/api/job")
+	@GetMapping(path = "/job")
 	public List<Job> getAllJobs() {
 		return jobService.getAll();
 	}
 
-	@GetMapping("/api/job/{id}")
+	@GetMapping("/job/{id}")
 	public ResponseEntity<Job> getJobById(@PathVariable int id) {
 		Job job = jobService.get(id);
 		if (job == null) {
@@ -43,12 +46,16 @@ public class JobPostController {
 		return ResponseEntity.ok(job);
 	}
 
-	@PostMapping(path = "/api/job/create")
-	public Job createJob(@RequestBody Job job) {
-		return jobService.create(job);
+	@PostMapping(path = "/job/create")
+	public ResponseEntity<?> createJob(@RequestBody Job job) {
+		Job createdJob= jobService.create(job);
+		if(createdJob==null) {
+			return ResponseEntity.badRequest().body("Error created job!");
+		}
+		return ResponseEntity.ok().body(createdJob);
 	}
 
-	@PutMapping(path = "/api/job/update/{id}")
+	@PutMapping(path = "/job/update/{id}")
 	public ResponseEntity<Job> updateJob(@PathVariable int id, @Valid @RequestBody Job job) {
 		Job updatedJob = jobService.update(id, job);
 		if (updatedJob == null) {
@@ -57,7 +64,7 @@ public class JobPostController {
 		return ResponseEntity.ok().body(updatedJob);
 	}
 
-	@DeleteMapping(value = "/api/job/delete/{id}")
+	@DeleteMapping(value = "/job/delete/{id}")
 	public ResponseEntity<?> deleteJob(@PathVariable int id) {
 		Job job = jobService.get(id);
 		if (job == null) {
@@ -69,12 +76,10 @@ public class JobPostController {
 		if (!isDeleted) {
 			return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 		}
-
-		return ResponseEntity.ok().build();
-
+		return ResponseEntity.ok().body("deleted successfully!");
 	}
 
-	@GetMapping("/api/job/category/{id}")
+	@GetMapping("/job/category/{id}")
 	public ResponseEntity<List<Job>> getJobsByCategory(@PathVariable int id) {
 		Category category = categoryService.get(id);
 		if (category == null) {
@@ -84,12 +89,12 @@ public class JobPostController {
 		return ResponseEntity.ok(jobList);
 	}
 
-	@GetMapping("/api/job/title/{title}")
-	public ResponseEntity<Boolean> findJobByTitle(@PathVariable("title") String title) {
-		Job job = jobService.getByTitle(title);
-		if (job == null) {
-			return ResponseEntity.ok().body(false);
+	@GetMapping("/job/title/{title}")
+	public ResponseEntity<List<Job>> findJobByTitle(@PathVariable("title") String title) {
+		List<Job> jobList = jobService.getByTitle(title);
+		if (jobList.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
-		return ResponseEntity.ok().body(true);
+		return ResponseEntity.ok(jobList);
 	}
 }

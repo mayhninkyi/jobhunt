@@ -29,7 +29,7 @@ public class JobPostServiceImpl implements JobPostService {
 	@Override
 	public Job create(Job job) {
 		job.setCreatedAt(LocalDateTime.now());
-		return null;
+		return jobRepo.save(job);
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class JobPostServiceImpl implements JobPostService {
 	}
 
 	@Override
-	public Job getByTitle(String title) {
+	public List<Job> getByTitle(String title) {
 		return jobRepo.findByTitle(title);
 	}
 
