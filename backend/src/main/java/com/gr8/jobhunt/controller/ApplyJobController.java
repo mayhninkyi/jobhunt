@@ -5,8 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.gr8.jobhunt.entity.ApplyJob;
+import com.gr8.jobhunt.entity.User;
 import com.gr8.jobhunt.service.ApplyJobService;
 import com.gr8.jobhunt.service.StorageService;
+import com.gr8.jobhunt.service.UserService;
 
 @RestController
 @RequestMapping("/api")
@@ -28,12 +31,28 @@ public class ApplyJobController {
 	
 	@Autowired
 	StorageService storageService;
+	
+	@Autowired
+	UserService userService;
 
 	
-	@GetMapping(path = "/applyJobs")
-	public List<ApplyJob> getAllApplyJobs() {
-		return service.getAll();
+	@GetMapping("/applyJobsByUser/{user_id}")
+	public ResponseEntity<?> getApplyJobByUser(
+			@PathVariable("user_id") int userId
+	) {
+		User user = userService.get(userId);
+		if (user == null) {
+			return ResponseEntity.badRequest().body("User is invalid");
+		}
+		List<ApplyJob> applyList = service.getByUser(user);
+		if (applyList.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		return ResponseEntity.ok(applyList);
 	}
+
+	
+	
 	
 	@PostMapping(path = "/applyJobs/create")
 	public ResponseEntity<?> createApplyJob(@RequestBody ApplyJob applyJob) {

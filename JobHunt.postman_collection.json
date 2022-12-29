@@ -12,13 +12,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/user/getAllUser",
+					"raw": "http://localhost:8080/api/user/getAllUser",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"user",
 						"getAllUser"
 					]
@@ -42,13 +43,14 @@
 					"raw": "{\r\n    \"name\":\"mhk\",\r\n    \"gmail\":\"abc@gmail.com\",\r\n    \"password\":\"123123\",\r\n    \"role\":\"user\",\r\n    \"profilePath\":\"\",\r\n    \"phone\":\"09966514846\"\r\n\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/user/register",
+					"raw": "http://localhost:8080/api/user/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"user",
 						"register"
 					]
@@ -72,13 +74,14 @@
 					"raw": "{\r\n    \"gmail\":\"abc@gmail.com\",\r\n    \"password\":\"123123\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/user/login",
+					"raw": "http://localhost:8080/api/user/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"user",
 						"login"
 					]
@@ -102,13 +105,14 @@
 					"raw": "{\r\n    \"id\":3,\r\n    \"name\":\"Model\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/category/create",
+					"raw": "http://localhost:8080/api/category/create",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"category",
 						"create"
 					]
@@ -122,13 +126,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/category",
+					"raw": "http://localhost:8080/api/category",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"category"
 					]
 				}
@@ -151,13 +156,14 @@
 					"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"IT edit\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/category/update",
+					"raw": "http://localhost:8080/api/category/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"category",
 						"update"
 					]
@@ -171,13 +177,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/category/delete/2",
+					"raw": "http://localhost:8080/api/category/delete/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"category",
 						"delete",
 						"2"
@@ -192,13 +199,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/userStatus",
+					"raw": "http://localhost:8080/api/userStatus",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"userStatus"
 					]
 				}
@@ -217,13 +225,14 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/user/profile?id=1",
+					"raw": "http://localhost:8080/api/user/profile?id=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"user",
 						"profile"
 					],
@@ -253,17 +262,235 @@
 					"raw": " {\r\n        \"id\": 1,\r\n        \"name\": \"May Hnin Kyi\",\r\n        \"password\": \"$2a$10$UZtk.i7Gg3GhiFdr6mewB.Xo5x//K7BAskoEbY2E/ypXU7qp6MH4i\",\r\n        \"gmail\": \"abc@gmail.com\",\r\n        \"status\": \"active\",\r\n        \"role\": \"user\",\r\n        \"about\": \"\",\r\n        \"address\": \"\",\r\n        \"profilePath\": \"\",\r\n        \"phone\": \"\",\r\n        \"createdAt\": \"2022-12-17T15:46:07\",\r\n        \"updatedAt\": null\r\n    }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/user/update",
+					"raw": "http://localhost:8080/api/user/update",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"user",
 						"update"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "createJobPost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Junior Android Developer\",\r\n    \"description\": \"description description description\",\r\n    \"requirement\": \"requirement requirement requirement\",\r\n    \"noOfEmployee\": 5,\r\n    \"salary\": 450000,\r\n    \"isCloseJob\":false,\r\n    \"company\":{\"id\":1},\r\n    \"category\":{\"id\":3}\r\n   \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/job/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllJob",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/job",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteJob",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/job/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateJob",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Junior Android Developer edit\",\r\n    \"description\": \"description description description\",\r\n    \"requirement\": \"requirement requirement requirement\",\r\n    \"noOfEmployee\": 5,\r\n    \"salary\": 450000,\r\n    \"isCloseJob\":false,\r\n    \"company\":{\"id\":1},\r\n    \"category\":{\"id\":3}\r\n   \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/job/update/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						"update",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getJobById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/job/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getJobsByCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/job/category/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						"category",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getJobsByTitle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/job/title/Junior Android Developer edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						"title",
+						"Junior Android Developer edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "applyJob",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cvFormPath\": \"/media/pdf/1672320685_pdf-test.pdf\",\r\n    \"cvVideoPath\": \"/media/mp4/1672320327_file_example_MP4_480_1_5MG.mp4\",\r\n    \"isCloseJob\":false,\r\n    \"user\":{\"id\":1},\r\n    \"job\":{\"id\":2}\r\n   \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/applyJobs/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"applyJobs",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fileCreate",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getApplyJobByUser",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
