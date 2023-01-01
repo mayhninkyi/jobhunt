@@ -40,7 +40,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"mhk\",\r\n    \"gmail\":\"abc@gmail.com\",\r\n    \"password\":\"123123\",\r\n    \"role\":\"user\",\r\n    \"profilePath\":\"\",\r\n    \"phone\":\"09966514846\"\r\n\r\n}"
+					"raw": "{\r\n    \"name\":\"may\",\r\n    \"gmail\":\"may@gmail.com\",\r\n    \"password\":\"123123\",\r\n    \"role\":\"user\"\r\n\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/user/register",
@@ -71,7 +71,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"gmail\":\"abc@gmail.com\",\r\n    \"password\":\"123123\"\r\n}"
+					"raw": "{\r\n    \"gmail\":\"maycompany@gmail.com\",\r\n    \"password\":\"123456\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/user/login",
@@ -102,7 +102,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\":3,\r\n    \"name\":\"Model\"\r\n}"
+					"raw": "{\r\n    \"id\":2,\r\n    \"name\":\"Java Developer\"\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/category/create",
@@ -460,7 +460,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cvFormPath\": \"/media/pdf/1672320685_pdf-test.pdf\",\r\n    \"cvVideoPath\": \"/media/mp4/1672320327_file_example_MP4_480_1_5MG.mp4\",\r\n    \"isCloseJob\":false,\r\n    \"user\":{\"id\":1},\r\n    \"job\":{\"id\":2}\r\n   \r\n}"
+					"raw": "{\r\n    \"cvFormPath\": \"/media/pdf/1672320685_pdf-test.pdf\",\r\n    \"cvVideoPath\": \"/media/mp4/1672320327_file_example_MP4_480_1_5MG.mp4\",\r\n    \"expectedSalary\":1000000,\r\n    \"user\":{\"id\":1},\r\n    \"job\":{\"id\":2}\r\n   \r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/api/applyJobs/create",
@@ -481,8 +481,36 @@
 		{
 			"name": "fileCreate",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fileType",
+							"value": "file/pdf",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Lenovo/Downloads/pdf-test.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/file/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"file",
+						"create"
+					]
+				}
 			},
 			"response": []
 		},
@@ -490,7 +518,93 @@
 			"name": "getApplyJobByUser",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/applyJobsByUser/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"applyJobsByUser",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserRole",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/userRole",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"userRole"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getJobsByCompany",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/job/company/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"job",
+						"company",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changePassword",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"current_pwd\": \"123456\",\r\n    \"new_pwd\": \"123123\",\r\n    \"con_new_pwd\": \"123123\",\r\n    \"ori_id\":5\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/changePwd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"changePwd"
+					]
+				}
 			},
 			"response": []
 		}
