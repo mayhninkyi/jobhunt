@@ -80,7 +80,7 @@ export default {
         if (this.loginUser.role == "company") {
           this.$router.push({ path: "/created_jobs" });
         } else {
-          this.$router.push({ path: "/applyJob" });
+          this.$router.push({ path: "/home" });
         }
       } else {
         this.$router.push({ path: "/" });

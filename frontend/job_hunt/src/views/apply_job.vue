@@ -7,30 +7,30 @@
 
                 <!-- Expected Salary-->
                 <v-text-field v-model="salary" type="number" suffix="MMK" :rules="[
-    (v) => !!v || 'Required',
-]" label="Expected Salary" required></v-text-field>
+                    (v) => !!v || 'Required',
+                ]" label="Expected Salary" required></v-text-field>
                 <!--CV Video-->
 
                 <v-file-input v-model="cvVideo" label="CV video" show-size prepend-icon="mdi-camera"
                     placeholder="Choose Video" accept="video/mp4" :rules="[
-    (v) => !!v || 'Required',
-    (v) =>
-        !v ||
-        v.size < 100000000 ||
-        'Image size should be less than 100 MB!',
-]" @change="onChangeVideo"></v-file-input>
+                        (v) => !!v || 'Required',
+                        (v) =>
+                            !v ||
+                            v.size < 100000000 ||
+                            'Image size should be less than 100 MB!',
+                    ]" @change="onChangeVideo"></v-file-input>
 
                 <video v-if="cvVideoPath != null" class="mb-2" width="100%" :src="cvVideoPath" controls></video>
 
                 <!--cv form-->
                 <v-file-input v-model="cvFile" label="CV Form" show-size prepend-icon="mdi-file"
                     placeholder="Choose File" accept="file/pdf" :rules="[
-    (v) => !!v || 'Required',
-    (v) =>
-        !v ||
-        v.size < 100000000 ||
-        'Image size should be less than 10 MB!',
-]" @change="onChangeFile"></v-file-input>
+                        (v) => !!v || 'Required',
+                        (v) =>
+                            !v ||
+                            v.size < 100000000 ||
+                            'Image size should be less than 10 MB!',
+                    ]" @change="onChangeFile"></v-file-input>
 
                 <!-- Apply Btn -->
                 <v-btn :disabled="!applyJobForm" color="blue-grey darken-3 white--text" class="mr-4"
@@ -47,7 +47,7 @@
         </v-container>
     </div>
 </template>
-    
+
 <script>
 import utils from "../utils/utils";
 
@@ -67,6 +67,7 @@ export default {
             expectedSalary: 0,
             errorAlert: false,
             loading: false,
+            job_id: this.$route.params.id,
         };
     },
 
@@ -101,23 +102,58 @@ export default {
                 try {
                     this.loading = true;
 
-                    // API Call
-                    const resp = await utils.http.post("/api/applyJobs/create", {
-                        cvFormPath: this.cvFormPath,
-                        cvVideoPath: this.cvVideoPath,
-                        expectedSalary: this.expectedSalary,
-                        user: { id: this.loginUser.id },
-                        job: { id: 6 },
-                    });
-                    if (resp.status === 200) {
-                        const data = await resp.json();
-                        if (data) {
-                            console.log(data);
-                            this.$router.push({ path: "/profile" });
-                        }
+                    let respVideoData = null;
+                    const respVideo = await utils.http.postMedia(
+                        "/api/file/create",
+                        this.cvVideo,
+                        this.cvVideo.type
+                    );
+                    if (respVideo.status === 200) {
+                        respVideoData = await respVideo.text();
+                        console.log(respVideoData);
                     } else {
                         this.errorAlert = true;
                     }
+
+                    let respFileData = null;
+                    const respFile = await utils.http.postMedia(
+                        "/api/file/create",
+                        this.cvFile,
+                        this.cvFile.type
+                    );
+                    if (respFile.status === 200) {
+                        respFileData = await respFile.text();
+                        console.log(respFileData);
+
+                    } else {
+                        this.errorAlert = true;
+                    }
+
+                    console.log(this.expectedSalary);
+                    console.log(this.loginUser.id);
+
+
+                    if (respVideoData && respFileData) {
+                        // API Call
+                        const resp = await utils.http.post("/api/applyJobs/create", {
+                            cvFormPath: respFileData,
+                            cvVideoPath: respVideoData,
+                            expectedSalary: this.expectedSalary,
+                            user: { id: this.loginUser.id },
+                            job: { id: this.job_id },
+                        });
+                        if (resp.status === 200) {
+                            const data = await resp.json();
+                            if (data) {
+                                console.log(data);
+                                this.$router.push({ path: "/profile" });
+                            }
+                        } else {
+                            this.errorAlert = true;
+                        }
+                    }
+
+
                 } catch (error) {
                     console.log(error);
                 } finally {
@@ -128,4 +164,3 @@ export default {
     },
 };
 </script>
-    

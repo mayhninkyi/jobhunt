@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gr8.jobhunt.entity.ApplyJob;
+import com.gr8.jobhunt.entity.Job;
 import com.gr8.jobhunt.entity.User;
 import com.gr8.jobhunt.repo.ApplyJobRepo;
 
@@ -26,6 +27,12 @@ public class ApplyJobServiceImpl implements ApplyJobService{
 	@Override
 	public List<ApplyJob> getByUser(User user) {
 		return repo.findByUser(user);
+	}
+
+
+	@Override
+	public List<ApplyJob> getByJob(Job job) {
+		return repo.findByJob(job);
 	}
 
 }

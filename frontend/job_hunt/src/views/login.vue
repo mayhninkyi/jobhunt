@@ -5,17 +5,17 @@
       <v-form ref="loginForm" v-model="loginForm">
         <!-- Email -->
         <v-text-field v-model="email" :rules="[
-  (v) => !!v || 'Required',
-  (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-]" label="E-mail" required></v-text-field>
+          (v) => !!v || 'Required',
+          (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        ]" label="E-mail" required></v-text-field>
 
         <!-- Password -->
         <v-text-field v-model="password" :counter="10" :rules="[
-  (v) => !!v || 'Required',
-  (v) =>
-    (v && v.length <= 10) ||
-    'Password must be less than 10 characters',
-]" label="Password" required></v-text-field>
+          (v) => !!v || 'Required',
+          (v) =>
+            (v && v.length <= 10) ||
+            'Password must be less than 10 characters',
+        ]" label="Password" required></v-text-field>
 
         <!-- Login Btn -->
         <v-btn :disabled="!loginForm" color="blue-grey darken-3 white--text" class="mr-4" @click="login()">
@@ -71,7 +71,12 @@ export default {
             if (data) {
               // Store Login Info in Vuex
               this.$store.commit("setLoginUser", data);
-              this.$router.push({ path: "/" });
+              if (data.role == "user") {
+                this.$router.push({ path: "/home" });
+              } else {
+                this.$router.push({ path: "/created_jobs" });
+              }
+
             }
           } else {
             this.errorAlert = true;

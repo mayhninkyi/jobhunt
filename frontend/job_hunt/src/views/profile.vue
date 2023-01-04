@@ -9,6 +9,12 @@
         <div class="text--primary">
           <div>{{ loginUser.gmail }}</div>
         </div>
+        <div class="text--primary">
+          <div>{{ loginUser.phone }}</div>
+        </div>
+        <div class="text--primary">
+          <div>{{ loginUser.about }}</div>
+        </div>
       </v-card-text>
       <v-btn text color="teal accent-4" @click="editProfile">
         Edit Profile
@@ -17,7 +23,7 @@
         Change Password
       </v-btn>
       <v-btn text color="teal accent-4" @click="appliedUsers">
-        See Your Applied Users
+        See Your Jobs
       </v-btn>
     </v-card>
   </div>
@@ -56,7 +62,7 @@ export default {
     },
 
     appliedUsers() {
-      this.$router.push({ path: "/profile" });
+      this.$router.push({ path: "/record" });
     },
   },
 };

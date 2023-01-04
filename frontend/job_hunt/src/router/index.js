@@ -9,16 +9,19 @@ import profile from "../views/profile.vue";
 import changePwd from "../views/changePwd.vue";
 import user_profile from "../views/user_profile.vue";
 import create_job from "../views/create_job.vue";
-import created_jobs from "../views/created_jobs_screen.vue"
-import apply_job from "../views/apply_job.vue"
+import created_jobs from "../views/created_jobs_screen.vue";
+import apply_job from "../views/apply_job.vue";
+import jobDetail from "../views/job_detail.vue";
+import dashboard from "../views/dashboard.vue";
+import record from "../views/record.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: home,
+    name: "dashboard",
+    component: dashboard,
   },
   {
     path: "/login",
@@ -53,12 +56,21 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
+  },
+
+  {
+    path: "/home",
+    name: "home",
+    component: home,
+    meta: {
+      requiresAuth: true,
+    },
 
     
   },
 
   {
-    path: "/applyJob",
+    path: "/applyJob/:id",
     name: "applyJob",
     component: apply_job,
     meta: {
@@ -67,7 +79,14 @@ const routes = [
 
     
   },
- 
+  {
+    path: "/job_detail/:id",
+    name: "job_detail",
+    component: jobDetail,
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   // ----------- Company
 
@@ -88,6 +107,15 @@ const routes = [
     meta: {
       requiresAuth: true,
      // requiresAdmin: true,
+    },
+  },
+
+  {
+    path: "/record",
+    name: "record",
+    component: record,
+    meta: {
+      requiresAuth: true,
     },
   },
 ];
