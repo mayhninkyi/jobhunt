@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.gr8.jobhunt.entity.Category;
 import com.gr8.jobhunt.entity.Job;
+import com.gr8.jobhunt.entity.User;
 import com.gr8.jobhunt.repo.JobPostRepo;
 
 @Service
@@ -69,6 +70,11 @@ public class JobPostServiceImpl implements JobPostService {
 	@Override
 	public List<Job> getByTitle(String title) {
 		return jobRepo.findByTitle(title);
+	}
+
+	@Override
+	public List<Job> getAllByCompany(User user) {
+		return jobRepo.findByCompany(user);
 	}
 
 }

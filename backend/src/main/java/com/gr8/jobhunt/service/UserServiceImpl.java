@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gr8.jobhunt.entity.User;
+import com.gr8.jobhunt.entity.UserRole;
 import com.gr8.jobhunt.entity.UserStatus;
 import com.gr8.jobhunt.repo.UserRepo;
 
@@ -117,6 +118,15 @@ public class UserServiceImpl implements UserService{
 			System.out.println("pwd updated");
 		}
 
+	}
+
+	@Override
+	public List<String> getAllRole() {
+		List<String> userRoleList=new ArrayList<>();
+		for(UserRole role:Arrays.asList(UserRole.values())) {
+			userRoleList.add(role.toString());
+		}
+		return userRoleList;
 	}
 
 }

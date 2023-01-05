@@ -21,5 +21,7 @@ public interface UserService {
   
   public List<String> getAllStatus();
   
+  public List<String> getAllRole();
+  
   public void updatePassword(int id,String newPassword);
 }

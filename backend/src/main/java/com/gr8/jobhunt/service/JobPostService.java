@@ -3,6 +3,7 @@ package com.gr8.jobhunt.service;
 import java.util.List;
 
 import com.gr8.jobhunt.entity.Job;
+import com.gr8.jobhunt.entity.User;
 import com.gr8.jobhunt.entity.Category;
 
 public interface JobPostService {
@@ -18,6 +19,8 @@ public interface JobPostService {
 	public boolean delete(int id);
 
 	public List<Job> getAllByCategory(Category category);
+	
+	public List<Job> getAllByCompany(User user);
 
 	public List<Job> getByTitle(String title);
 

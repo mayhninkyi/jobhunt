@@ -52,6 +52,17 @@ public class ApplyJob implements java.io.Serializable {
 	@Column(length = 200)
 	@NotBlank(message = "Required")
 	private String cvVideoPath;
+	
+	@Column(length=50)
+	private int expectedSalary;
+
+	public int getExpectedSalary() {
+		return expectedSalary;
+	}
+
+	public void setExpectedSalary(int expectedSalary) {
+		this.expectedSalary = expectedSalary;
+	}
 
 	@Column(nullable = false)
 	@ColumnDefault("CURRENT_TIMESTAMP")

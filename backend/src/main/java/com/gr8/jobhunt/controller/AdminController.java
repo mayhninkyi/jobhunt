@@ -33,6 +33,11 @@ public class AdminController {
 		return userService.getAllStatus();
 	}
 	
+	@GetMapping("/userRole")
+	public List<String> getAllRoles(){
+		return userService.getAllRole();
+	}
+	
 	@GetMapping("/category")
 	public List<Category> getAllCategory(){
 		return categoryService.getAll();

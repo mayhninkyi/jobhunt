@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gr8.jobhunt.entity.Category;
 import com.gr8.jobhunt.entity.Job;
+import com.gr8.jobhunt.entity.User;
 import com.gr8.jobhunt.service.CategoryService;
 import com.gr8.jobhunt.service.JobPostService;
+import com.gr8.jobhunt.service.UserService;
 
 @RestController
 @RequestMapping("/api")
@@ -31,6 +33,9 @@ public class JobPostController {
 
 	@Autowired
 	CategoryService categoryService;
+	
+	@Autowired
+	UserService userService;
 
 	@GetMapping(path = "/job")
 	public List<Job> getAllJobs() {
@@ -86,6 +91,16 @@ public class JobPostController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		List<Job> jobList = jobService.getAllByCategory(category);
+		return ResponseEntity.ok(jobList);
+	}
+	
+	@GetMapping("/job/company/{id}")
+	public ResponseEntity<List<Job>> getJobsByCompany(@PathVariable int id) {
+		User company =userService.get(id);
+		if (company == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		List<Job> jobList = jobService.getAllByCompany(company);
 		return ResponseEntity.ok(jobList);
 	}
 
